@@ -1,0 +1,7 @@
+		================Sistema de restaurante================
+
+	Utilizando estrutura de dados, crie um algoritmo que controle as reservas de mesas em um restaurante chamado WMOTA Bistrô.
+
+a) O restaurante possui uma estrutura  de 30x30 (mesas). 
+b) Ao escolher a mesa a reserva deverá ser feita no nome de 1 pessoa.
+c) O algoritmo deve exibir as mesas na tela diferenciando as vazias das ocupadas. 
