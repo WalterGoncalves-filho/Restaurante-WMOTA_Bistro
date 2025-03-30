@@ -11,7 +11,7 @@ set(CMAKE_C_STANDARD 11)
 include_directories(src)
 
 # Cria o executável restaurante a partir dos arquivos .c
-add_executable(restaurante
+add_executable(restaurante_Bistro
     src/main.cpp
     src/reservas.cpp
 )
