@@ -1,3 +1,0 @@
-D:/desktop/estudos/Fametro/Projetos/Estrutura_de_Dados/Restaurante-WMOTA_Bistro/restaurante/build/CMakeFiles/restaurante.dir
-D:/desktop/estudos/Fametro/Projetos/Estrutura_de_Dados/Restaurante-WMOTA_Bistro/restaurante/build/CMakeFiles/edit_cache.dir
-D:/desktop/estudos/Fametro/Projetos/Estrutura_de_Dados/Restaurante-WMOTA_Bistro/restaurante/build/CMakeFiles/rebuild_cache.dir
