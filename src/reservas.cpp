@@ -1,6 +1,5 @@
 // src/reserva.c
-#include <stdio.h>
-#include <string.h>
+#include "imports.h"
 #include "reservas.h"
 
 // metodo de iniciar a matriz de mesas
@@ -16,6 +15,7 @@ void inicializarMesas(Mesa matriz[TAM][TAM]) {
 
 // método de exibir as mesas no painel
 void exibirMesas(Mesa matriz[TAM][TAM]) {
+    printf("\n");
     for (int i = 0; i < TAM; i++) {
         for (int j = 0; j < TAM; j++) {
             if (matriz[i][j].ocupada)
@@ -25,6 +25,7 @@ void exibirMesas(Mesa matriz[TAM][TAM]) {
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 // método de reservar mesa
