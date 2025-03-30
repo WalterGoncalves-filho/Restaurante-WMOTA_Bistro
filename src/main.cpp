@@ -3,7 +3,7 @@
 #include "reservas.h"
 
 Mesa restaurante[TAM][TAM];
-void iniciarSistema();
+void iniciarSistema();void limparTela();
 
 int main() {
 
