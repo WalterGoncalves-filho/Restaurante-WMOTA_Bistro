@@ -59,7 +59,7 @@ void iniciarSistema(){
         break;
 
     case 3: 
-        system("cls");
+        limparTela();
         exibirMesas(restaurante);  
         break;
 
@@ -69,5 +69,12 @@ void iniciarSistema(){
 
     }while (op!=0);
 
+}
 
+void limparTela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
