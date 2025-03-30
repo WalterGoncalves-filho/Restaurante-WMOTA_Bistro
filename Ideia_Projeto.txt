@@ -5,3 +5,18 @@
 a) O restaurante possui uma estrutura  de 30x30 (mesas). 
 b) Ao escolher a mesa a reserva deverá ser feita no nome de 1 pessoa.
 c) O algoritmo deve exibir as mesas na tela diferenciando as vazias das ocupadas. 
+
+
+		===================== Estrutura do projeto ======================
+
+
+/restaurante
+│── src/
+│   ├── main.c        # Arquivo principal
+│   ├── reservas.c    # Implementação das funções de reserva
+│   ├── reservas.h    # Declaração das funções de reserva
+│── build/            # Pasta onde os binários serão gerados
+│── CMakeLists.txt    # Para configurar a compilação com CMake
+
+
+
