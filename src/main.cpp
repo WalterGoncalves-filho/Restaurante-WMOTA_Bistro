@@ -3,15 +3,9 @@
 #include "reservas.h"
 
 Mesa restaurante[TAM][TAM];
-void iniciarSistema();void limparTela();
-
+void iniciarSistema(), limparTela(), menuPrincipal(), msg(const char* mensagem),  banner(const char* tituloSecao);
+void esperarTecla();
 int main() {
-
-
-    // menu do usuario:
-    printf("\n======================================\n");
-    printf("+    Restaurante do WMota Bistro     +\n");
-    printf("======================================\n");
 
     iniciarSistema();
 
@@ -19,56 +13,123 @@ int main() {
 }
 
 void iniciarSistema(){
-    
     inicializarMesas(restaurante);
 
     int op;
-    do{
-        printf("\n");
-        printf("\n----- Menu -----\n\n");
-        printf("[1] Reservar mesa\n");
-        printf("[2] Cancelar reserva\n");
-        printf("[3] Exibir mesas\n");
-        printf("[0] Sair\n");
-        printf("Escolha uma opcao: ");
+    do {
+        limparTela();             // limpa a tela antes de exibir o menu
+        banner("Menu Pincipal");           // mostra o banner no menu
+
+        menuPrincipal();
         scanf("%d", &op);
 
         int linha, coluna;
         char nome[50];
 
-    switch (op){
-    case 1: 
-        printf("Linha: ");
-            scanf("%d", &linha);
-        printf("Coluna: ");
-            scanf("%d", &coluna);
-        printf("Nome: ");
-            scanf(" %49[^\n]", nome);
-        if (reservarMesa(restaurante, linha, coluna, nome))
-            printf("Reserva realizada com sucesso.\n");
-        else
-            printf("Não foi possível reservar a mesa.\n");
-        break;
+        switch (op) {
+            case 1:
+                limparTela();
+                banner("Reservando Mesa.."); // mostra o banner na tela de reserva
+                msg("Linha");
+                scanf("%d", &linha);
+                msg("Coluna");
+                scanf("%d", &coluna);
+                msg("Nome");
+                scanf(" %49[^\n]", nome);
+                if (reservarMesa(restaurante, linha, coluna, nome)) {
+                    restaurante[linha][coluna].codigo = gerarCodigo(); 
+                    printf("       Reserva realizada com sucesso! Seu cod: '%d'\n", restaurante[linha][coluna].codigo);
+                } else {
+                    printf("       Não foi possivel reservar a mesa.\n");
+                }
+                esperarTecla();
+                break;
+
+            case 2:
+                limparTela();
+                banner("Cancelamento de Reserva"); // mostra o banner na tela de cancelamento
+                printf("\n"
+                "        [1] Cancelar por linha e coluna\n"
+                );
+                printf("        [2] Cancelar por codigo\n");
+
+                int subop;
+                msg("Escolha uma opcao");
+                scanf("%d", &subop);
+
+                if (subop == 1) {
+                    msg("Linha da mesa a cancelar");
+                    scanf("%d", &linha);
+                    msg("Coluna da mesa a cancelar");
+                    scanf("%d", &coluna);
+                    cancelarReserva(restaurante, linha, coluna);
+                } else if (subop == 2) {
+                    int codigo;
+                    msg("Digite o codigo da reserva");
+                    scanf("%d", &codigo);
+                    cancelarReservaPorCodigo(restaurante, codigo);
+                } else {
+                    printf("Opcao invalida.\n");
+                }
+                esperarTecla();
+                break;
+
+            case 3:
+                limparTela();
+                banner("Exibindo Mesas!"); // mostra o banner antes de exibir as mesas
+                exibirMesas(restaurante);
+                esperarTecla();
+                break;
+
+            case 0:
+                printf("Saindo...\n");
+                break;
+
+            default:
+                printf("Opcao invalida.\n");
+                break;
+        }
+
+    } while (op != 0);
+}
+
+
+void banner(const char* tituloSecao) {
+    printf(
+        "\n"
+        "       ======================================\n"
+        "       +    Restaurante do WMota Bistro     +\n"
+        "       ======================================\n"
+    );
     
-    case 2:  
-        printf("Linha da mesa a cancelar: ");
-        scanf("%d", &linha);
-        printf("Coluna da mesa a cancelar: ");
-        scanf("%d", &coluna);
-        cancelarReserva(restaurante, linha, coluna);
-        break;
-
-    case 3: 
-        limparTela();
-        exibirMesas(restaurante);  
-        break;
-
-    default: printf("Saindo...\n");
-        break;
+    if (tituloSecao != NULL && tituloSecao[0] != '\0') {
+        printf(
+            "\n"
+            "        %s\n\n", tituloSecao
+        );
     }
+}
 
-    }while (op!=0);
+void msg(const char* mensagem){
+    if(mensagem!=NULL && mensagem[0] != '\0'){
+        printf(
+            "       %s: ", 
+            mensagem
+        );
+    }
+}
 
+void menuPrincipal(){
+    printf(
+        "\n"
+        "        ----- Menu -----\n\n"
+        "        [1] Reservar mesa\n"
+        "        [2] Cancelar reserva\n"
+        "        [3] Exibir mesas\n"
+        "        [0] Sair\n"
+        ""
+        "        Escolha uma opcao: "
+    );
 }
 
 void limparTela() {
@@ -76,5 +137,15 @@ void limparTela() {
         system("cls");
     #else
         system("clear");
+    #endif
+}
+
+void esperarTecla() {
+    printf("\nPressione qualquer tecla para continuar...");
+    #ifdef _WIN32
+        system("pause >nul"); // no Windows, pausa sem mostrar "Press any key"
+    #else
+        while (getchar() != '\n'); // limpa buffer
+        getchar(); // aguarda o Enter no Linux/mac
     #endif
 }
