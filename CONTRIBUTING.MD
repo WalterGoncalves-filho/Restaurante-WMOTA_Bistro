@@ -56,10 +56,10 @@ Para manter um histórico de commits claro e consistente, utilizamos uma conven�
 
 Atualmente, não possuímos uma suíte de testes ou integração contínua configurada. No entanto, ao contribuir, **garanta que o código esteja funcionando** e siga os padrões de qualidade definidos pela equipe.
 
-## 5. Documentação
+<!-- ## 5. Documentação
 
 - A documentação do projeto pode ser feita utilizando ferramentas de IA e está disponível na [Wiki do Projeto](https://github.com/SupreLogic/zfmpro/wiki) (ou por meio de outro canal interno).
-- Caso você adicione ou modifique uma funcionalidade, atualize a documentação correspondente para manter tudo sincronizado.
+- Caso você adicione ou modifique uma funcionalidade, atualize a documentação correspondente para manter tudo sincronizado. -->
 
 ## 6. Reportando Problemas e Solicitando Funcionalidades
 
@@ -78,14 +78,12 @@ Atualmente, não possuímos uma suíte de testes ou integração contínua confi
 ## 8. Outras Considerações
 
 **Padrão de Código:**  
- - Siga os padrões de código do Python (PEP8) para manter o código limpo e legível.
+ - Siga os padrões de código do C ou C++ para manter o código limpo e legível.
  - Utilize palavras em Português para variáveis, métodos, classes, declarações etc...
- - Utilizar partials para todas as páginas HTML.
  - Urls com palavras compostas utilize "-" (Hífen), e para o nome utilize "_" (sublinhado/underscore). Ex: path('cadastro-clientes', name='cadastro_de_clientes')
 
 **Padrão de Libs:**
- - Javascript: Axios para requisições, priorizar as libs do template como: SweetAlert para alertas, DataTables para tabelas, Inputmask para máscaras, Daterangepicker para datas, Dropzone para upload de arquivos.
- - Python/Django: para APIs utilizar ModelViewSet.
+ - C/CMaker: para Compilar e configurar (app.exe).
   
 **Revisões e Feedback:**  
   Esteja aberto a feedbacks durante as revisões de código para melhorar a qualidade e a consistência do projeto.

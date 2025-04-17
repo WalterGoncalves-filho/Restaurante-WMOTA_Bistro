@@ -146,10 +146,6 @@ void limparTela() {
 
 void esperarTecla() {
     printf("\nPressione qualquer tecla para continuar...");
-    #ifdef _WIN32
-        system("pause >nul"); // no Windows, pausa sem mostrar "Press any key"
-    #else
-        while (getchar() != '\n'); // limpa buffer
-        getchar(); // aguarda o Enter no Linux/mac
-    #endif
+    fflush(stdout);  // garante que a mensagem aparece antes da espera
+    getchar();
 }
