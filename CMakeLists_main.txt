@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Projeto em C++, usando arquivos .cpp com código C ANSI
+project(RestauranteWMotaBistro CXX)
+
+set(CMAKE_CXX_STANDARD 98)
+
+# linkagem ldd
+set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
+
+# Arquivos-fonte
+add_executable(RestauranteWMotaBistro
+    ../src/main.cpp
+    ../src/reservas.cpp
+)
+
+# Pós-build: copiar o executável para a raiz do projeto E para dist/bin
+add_custom_command(TARGET RestauranteWMotaBistro POST_BUILD
+       # Cria APP/ na raiz se não existir
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/../APP
+
+    # Copia para a raiz do projeto
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:RestauranteWMotaBistro> ${CMAKE_SOURCE_DIR}/../
+
+    # Copia para APP/
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:RestauranteWMotaBistro> ${CMAKE_SOURCE_DIR}/../
+)

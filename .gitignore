@@ -1,3 +1,4 @@
 .vscode
-build/
-CMakeLists.txt
+dist/
+RestauranteWMotaBistro.exe
+build_projeto.bat
