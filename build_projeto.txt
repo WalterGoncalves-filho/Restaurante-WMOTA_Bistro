@@ -5,10 +5,18 @@ echo ====================================
 
 :: Passo 1: sincronizar o CMakeLists.txt
 python sync_cmake.py
+if errorlevel 1 (
+  echo Erro: Falha ao sincronizar o CMakeLists.txt.
+  exit /b %errorlevel%
+)
 
 :: Passo 2: apagar build antigo
 echo Limpando build antigo...
 rmdir /s /q dist\build
+if errorlevel 1 (
+  echo Erro: Falha ao apagar build antigo.
+  exit /b %errorlevel%
+)
 
 :: Passo 3: recriar a pasta de build
 mkdir dist\build
